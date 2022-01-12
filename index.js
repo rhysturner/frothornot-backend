@@ -12,11 +12,11 @@ app.get('/', (req, res) => {
     const dateFmt = now.toISOString().substring(0,10)
 
     const regex = /-/g;
-    console.log(dateFmt.replace(regex, ''));
+    console.log(dateFmt.replace(regex, ''))
 
-
+    const hr = now.getHours()
     const date = `${now.getFullYear()} : ${now.getUTCMonth()} : ${now.getDate()}`
-    const time = `${now.getUTCHours()}`
+    const time = `${hr}`
 
     
     // jsonMapQuery.php?date=20220109&time=11&zoom=12&cont=10&bounds=%28%28-34.10979587398766%2C+151.10809031178002%29%2C+%28-33.953309034703%2C+151.38961496998314%29%29 
