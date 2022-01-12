@@ -7,7 +7,26 @@ const port = 3000
 require('dotenv').config()
 
 app.get('/', (req, res) => {
-    // res.send('Hello World!')
+    res.send(`    
+        <header>
+        <h1>${process.env.TITLE_COPY}</h1>
+        </header>
+        <main>
+        <h1>${process.env.SUB_TITLE_COPY}</h1>
+        <p>${process.env.BODY_COPY}</p>
+        <img src='https://rtek.com.au/content/images/2022/01/frothn-01S.jpg' style='width: 1000px; height: 1052px; object-fit: cover;'/>
+        </main>
+        <footer>
+        <p>${process.env.FOOTER_COPY}</p>
+        </footer>
+        `)
+})
+
+app.get('/users/:userId/books/:bookId', function (req, res) {
+    res.send(req.params)
+  })
+
+app.get('/surf', (req, res) => {
     const now = new Date()
     const dateFmt = now.toISOString().substring(0,10)
 
@@ -20,7 +39,7 @@ app.get('/', (req, res) => {
 
     
     // jsonMapQuery.php?date=20220109&time=11&zoom=12&cont=10&bounds=%28%28-34.10979587398766%2C+151.10809031178002%29%2C+%28-33.953309034703%2C+151.38961496998314%29%29 
-    let url = `${process.env.WAVES_API}${process.env.WAVES_API_ENDPOINT}date=${dateFmt}&time=${time}&zoom=12&count=10&bounds=${process.env.WAVES_API_BOUNDS}`;
+    let url = `${process.env.WAVES_API}${process.env.WAVES_API_ENDPOINT}date=${dateFmt}&time=${time}&zoom=12&cont=10&bounds=${process.env.WAVES_API_BOUNDS}`;
     console.log('url', url)
 
     // res.send(`Hello World! ${url}`)
